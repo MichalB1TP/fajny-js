@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Kalkulator Rat</title>
+    <script>
+        function Oblicz() {
+            let liczbarat = parseFloat(document.getElementById("raty").value);
+            let kursreact = document.getElementById("react");
+            let kursjava = document.getElementById("js");
+            let wynik = document.getElementById("wyniczek");
+            let wybor = document.getElementById("miasto").value;
+            let kobieta = document.getElementById("pleck").checked;
+            let chlop = document.getElementById("plecm").checked;
+            let plec = "Nierozpoznano płci";
+            let imie = document.getElementById("imie").value
+            let nazwisko = document.getElementById("nazwisko").value
+            let email = document.getElementById("email").value
+
+
+            let kwota = 0;
+
+            if (kursreact.checked) {
+                kwota += 5000;
+            }
+
+            if (kursjava.checked) {
+                kwota += 3000;
+            }
+
+            if (kobieta) {
+                plec = "kobietą";
+            } else if (chlop) {
+                plec = "mężczyzną";
+            }
+
+            let rata = kwota / liczbarat;
+
+            wynik.innerHTML =
+                "Witaj " +
+                imie +
+                " " +
+                nazwisko +
+                ". Jesteś " +
+                plec +
+                ". Kurs odbędzie się w " +
+                wybor +
+                ". Koszt całkowity: " +
+                kwota +
+                " zł. Płacisz " +
+                liczbarat +
+                " rat po " +
+                " zł." +
+                " Będziemy kontaktować się na " +
+                email;
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <label for="imie">Imię:</label> 
+        <input type="text" id="imie"><br /><br />
+        <label for="Nazwisko">Nazwisko:</label> 
+        
+        <input type="text" id="nazwisko"><br /><br />
+        <label for="email">Email:</label>
+        <input type="email" id="email"> <br><br>
+        <input type="radio" name="plec" id="plecm" />mężczyzna
+        <input type="radio" name="plec" id="pleck" />kobieta <br /><br />
+
+        <select id="miasto">
+            <option value="Katowicach">Katowice</option>
+            <option value="Warszawie">Warszawa</option>
+            <option value="Lublinie">Lublin</option>
+        </select>
+        <br><br>
+        <input type="checkbox" id="react" />Kurs React.js <br /><br />
+        <input type="checkbox" id="js" />Kurs JavaScript <br /><br />
+        <label for="raty">Liczba rat:</label>
+        <input type="number" id="raty" min="1" /> <br><br>
+        <input type="button" onclick="Oblicz()" value="Oblicz" />
+    </form>
+
+    <div id="wyniczek" style="margin-top: 20px; font-weight: bold"></div>
+</body>
+
+</html>
